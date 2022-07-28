@@ -22,6 +22,12 @@ const Home = () => {
         e.preventDefault();
         const newRecieptRecord = { ...userReciept, id: new Date().getTime().toString() }
         setRecords([...records, newRecieptRecord]);
+        setUserReciept({
+            date: "",
+            amount: "",
+            paymentmode: "",
+            remark: ""
+        });
 
     };
     return (
@@ -54,6 +60,20 @@ const Home = () => {
                     </div>
 
                 </form>
+                <div>
+                    {
+                        records.map((currEle) => {
+                            return (
+                                <div key={currEle.id}>
+                                    <p>{currEle.date}</p>
+                                    <p>{currEle.amount}</p>
+                                    <p>{currEle.paymentmode}</p>
+                                    <p>{currEle.remark}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </>
 
         </div>
