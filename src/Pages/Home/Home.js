@@ -11,36 +11,46 @@ const Home = () => {
 
 
     });
-    const handleInput = () => {
+    const [records, setRecords] = useState([]);
+    const handleInput = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setUserReciept({ ...userReciept, [name]: value })
 
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newRecieptRecord = { ...userReciept, id: new Date().getTime().toString() }
+        setRecords([...records, newRecieptRecord]);
+
+    };
     return (
         <div>
             <h1 class="heading-one">Reciept Detail</h1>
             <>
-                <form >
-                    <div >
+                <form onSubmit={handleSubmit}>
+                    <div class="form-div" >
                         <label class="form-input" htmlFor="date">Date</label>
                         <input placeholder="Enter Date" type="text"
                             value={userReciept.date} onChange={handleInput} name="date" id="date" />
                     </div>
-                    <div >
+                    <div class="form-div" >
                         <label class="form-input" htmlFor="amount">Amount</label>
                         <input placeholder="Enter Amount (in INR)"
                             type="text" value={userReciept.amount} onChange={handleInput} name="amount" id="amount" />
                     </div>
-                    <div >
+                    <div class="form-div">
                         <label class="form-input" htmlFor="paymentmode">PaymentMode</label>
                         <input placeholder="Enter payment" type="text"
                             value={userReciept.paymentmode} onChange={handleInput} name="paymentmode" id="paymentmode" />
                     </div>
-                    <div >
+                    <div class="form-div">
                         <label class="form-input" htmlFor="remark">Remark</label>
                         <input placeholder="Enter Remark" value={userReciept.remark} onChange={handleInput} type="text" name="remark" id="remark" />
                     </div>
-                    <div>
-                        <button>Cancel</button>
-                        <button>Submit</button>
+                    <div >
+                        <button class="button">Cancel</button>
+                        <button class="button" type="submit">Submit</button>
                     </div>
 
                 </form>
