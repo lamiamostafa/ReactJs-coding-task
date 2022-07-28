@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 
 const Home = () => {
+    const [userReciept, setUserReciept] = useState({
+        date: "",
+        amount: "",
+        paymentmode: "",
+        remark: ""
+
+
+
+    });
+    const handleInput = () => {
+
+    }
     return (
         <div>
             <h1 class="heading-one">Reciept Detail</h1>
@@ -9,19 +21,22 @@ const Home = () => {
                 <form >
                     <div >
                         <label class="form-input" htmlFor="date">Date</label>
-                        <input placeholder="Enter Date" type="text" name="date" id="date" />
+                        <input placeholder="Enter Date" type="text"
+                            value={userReciept.date} onChange={handleInput} name="date" id="date" />
                     </div>
                     <div >
                         <label class="form-input" htmlFor="amount">Amount</label>
-                        <input placeholder="Enter Amount (in INR)" type="text" name="amount" id="amount" />
+                        <input placeholder="Enter Amount (in INR)"
+                            type="text" value={userReciept.amount} onChange={handleInput} name="amount" id="amount" />
                     </div>
                     <div >
                         <label class="form-input" htmlFor="paymentmode">PaymentMode</label>
-                        <input placeholder="Enter Date" type="text" name="paymentmode" id="paymentmode" />
+                        <input placeholder="Enter payment" type="text"
+                            value={userReciept.paymentmode} onChange={handleInput} name="paymentmode" id="paymentmode" />
                     </div>
                     <div >
                         <label class="form-input" htmlFor="remark">Remark</label>
-                        <input placeholder="Enter Remark" type="text" name="reamrk" id="remark" />
+                        <input placeholder="Enter Remark" value={userReciept.remark} onChange={handleInput} type="text" name="remark" id="remark" />
                     </div>
                     <div>
                         <button>Cancel</button>
